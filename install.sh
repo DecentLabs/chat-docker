@@ -22,6 +22,7 @@ service dhcpcd restart
 ifdown wlan0
 ifup wlan0
 
+/bin/cp configs/resolv /etc/resolv.conf
 /bin/cp configs/dnsmasq /etc/dnsmasq.d/wlan0
 /bin/cp configs/hostapd /etc/default/hostapd
 
