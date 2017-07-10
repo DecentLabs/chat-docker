@@ -23,11 +23,11 @@ apt-get purge -y dhcpcd5
 apt-get install -y ifupdown raspberrypi-net-mods man
 apt-get install -y hostapd dnsmasq
 
+/bin/cp configs/resolvconf /etc/resolvconf.conf
 /bin/cp configs/interfaces /etc/network/interfaces
 ifdown wlan0
 ifup wlan0
 
-/bin/cp configs/resolv /etc/resolv.conf
 /bin/cp configs/dnsmasq /etc/dnsmasq.d/wlan0
 /bin/cp configs/hostapd /etc/default/hostapd
 

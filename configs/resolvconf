@@ -1,0 +1,5 @@
+resolv_conf=/etc/resolv.conf
+name_servers=8.8.8.8
+dnsmasq_resolv=/var/run/dnsmasq/resolv.conf
+pdnsd_conf=/etc/pdnsd.conf
+unbound_conf=/var/cache/unbound/resolvconf_resolvers.conf
