@@ -3,6 +3,11 @@ if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root"
    exit 1
 fi
+
+echo "Upgrading world..."
+apt-get update
+apt-get -y upgrade
+
 echo "Installing Docker"
 apt-get install -y docker.io docker-compose git
 curl -ks https://packagecloud.io/install/repositories/Hypriot/Schatzkiste/script.deb.sh | sudo bash
@@ -14,9 +19,7 @@ systemctl unmask docker.socket
 systemctl start docker.service
 
 echo "Installing & Configuring Network Components"
-apt-get update
-apt-get upgrade
-apt-get purge dhcpcd5
+apt-get purge -y dhcpcd5
 apt-get install -y ifupdown raspberrypi-net-mods man
 apt-get install -y hostapd dnsmasq
 
