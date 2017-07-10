@@ -2,5 +2,6 @@ interface=wlan0
 listen-address=10.1.1.1
 bind-interfaces
 dhcp-range=10.1.2.1,10.1.2.254,12h
+address=/github.com/192.30.253.113
 address=/#/10.1.1.1
 

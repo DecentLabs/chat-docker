@@ -1,0 +1,11 @@
+version: "2"
+services:
+  app:
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/home/chat
+  db:
+    image: mysql
+    expose:
+      - "9000"

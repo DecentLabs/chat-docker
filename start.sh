@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build -t chat .
+docker-compose start
