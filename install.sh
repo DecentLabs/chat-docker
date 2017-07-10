@@ -16,11 +16,9 @@ systemctl start docker.service
 echo "Installing & Configuring Network Components"
 apt-get update
 apt-get upgrade
+apt-get purge dhcpcd5
 apt-get install -y ifupdown raspberrypi-net-mods man
-apt-get install -y hostapd dnsmasq dhcpcd5
-
-/bin/cp configs/dhcpcd /etc/dhcpcd.conf
-service dhcpcd restart
+apt-get install -y hostapd dnsmasq
 
 /bin/cp configs/interfaces /etc/network/interfaces
 ifdown wlan0
