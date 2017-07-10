@@ -1,6 +1,10 @@
 #!/bin/sh
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root"
+   exit 1
+fi
 echo "Installing Docker"
-apt-get install -y docker.io docker-compose
+apt-get install -y docker.io docker-compose git
 curl -ks https://packagecloud.io/install/repositories/Hypriot/Schatzkiste/script.deb.sh | sudo bash
 apt-get install -y docker-hypriot=1.10.3-1
 sh -c 'usermod -aG docker $SUDO_USER'
