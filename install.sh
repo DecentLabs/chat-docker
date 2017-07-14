@@ -47,7 +47,9 @@ ifup wlan0
 /bin/cp configs/hostapd.conf /etc/hostapd/hostapd.conf
 sed -i.bak s/hostname/${HOTSPOTNAME}/g /etc/hostapd/hostapd.conf
 
-service hostapd restart
-service dnsmasq restart
+service dnsmasq stop
+service hostapd stop
+service dnsmasq start
+service hostapd start
 
 echo "Done."
