@@ -43,7 +43,7 @@ ifup wlan0
 /bin/cp configs/dnsmasq /etc/dnsmasq.d/wlan0
 /bin/cp configs/hostapd /etc/default/hostapd
 /bin/cp configs/hostapd.conf /etc/hostapd/hostapd.conf
-sed -i.bak s/hostname/${HOTSPOTNAME}
+sed -i.bak s/hostname/${HOTSPOTNAME}/g /etc/hostapd/hostapd.conf
 
 service hostapd restart
 service dnsmasq restart
