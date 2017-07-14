@@ -21,6 +21,8 @@ apt-get update
 apt-get -y upgrade
 
 echo "Installing Docker"
+apt-get purge -y docker.io
+apt-get purge -y docker-hypriot
 apt-get install -y docker.io docker-compose git
 curl -ks https://packagecloud.io/install/repositories/Hypriot/Schatzkiste/script.deb.sh | sudo bash
 apt-get install -y docker-hypriot=1.10.3-1
