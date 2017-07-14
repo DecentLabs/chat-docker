@@ -8,14 +8,13 @@ fi
 
 if [ $# -eq 0 ]
   then
-    echo "Please provide the name of the Wifi Hotspot you'd like to use"
-    echo "Usage: ${0} <hotspot_name>"
-    exit 1
+    echo "Using hostname as Wifi Hotspot"
+    HOTSPOTNAME=`hostname`
+else
+  HOTSPOTNAME=${1}
 fi
 
-HOTSPOTNAME=${1}
-
-echo "Hotspot name: ${1}"
+echo "Hotspot name: ${HOTSPOTNAME}"
 
 echo "Upgrading world..."
 apt-get update
