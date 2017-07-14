@@ -1,8 +1,21 @@
-#!/bin/sh
+#!/bin/bash
+echo "Decent Lora Hotspot Installer"
+
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root"
    exit 1
 fi
+
+if [ $# -eq 0 ]
+  then
+    echo "Please provide the name of the Wifi Hotspot you'd like to use"
+    echo "Usage: ${0} <hotspot_name>"
+    exit 1
+fi
+
+HOTSPOTNAME=${1}
+
+echo "Hotspot name: ${1}"
 
 echo "Upgrading world..."
 apt-get update
@@ -30,6 +43,10 @@ ifup wlan0
 
 /bin/cp configs/dnsmasq /etc/dnsmasq.d/wlan0
 /bin/cp configs/hostapd /etc/default/hostapd
+/bin/cp configs/hostapd.conf /etc/hostapd/hostapd.conf
+sed -i.bak s/hostname/${HOTSPOTNAME}
 
 service hostapd restart
 service dnsmasq restart
+
+echo "Done."
